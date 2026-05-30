@@ -32,6 +32,6 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
-
+docker_notification/.env
 ### VS Code ###
 .vscode/
