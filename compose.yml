@@ -1,12 +1,14 @@
 services:
   bytebank-notification:
     build:
-      context: ../
+      context: .
     container_name: bytebank-notification
     environment:
       MAIL_USERNAME: ${MAIL_USERNAME}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
       SPRING_RABBITMQ_HOST: rabbitmq
+      RABBITMQ_USER: bytebank
+      RABBITMQ_PASS: bytebank123
       MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://zipkin:9411/api/v2/spans
     ports:
       - "8084:8084"

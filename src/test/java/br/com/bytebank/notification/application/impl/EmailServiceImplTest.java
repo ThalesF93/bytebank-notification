@@ -1,6 +1,6 @@
 package br.com.bytebank.notification.application.impl;
 
-import br.com.bytebank.notification.application.service.EmailService;
+import br.com.bytebank.notification.application.service.impl.EmailServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
