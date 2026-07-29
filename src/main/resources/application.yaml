@@ -17,6 +17,20 @@ spring:
           initial-interval: 5000
           multiplier: 3
           max-interval: 10000
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: notification-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: latest
+      enable-auto-commit: false
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: fraud-notification:br.com.bytebank.notification.infrastructure.messaging.event.FraudNotificationEvent
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
   mail:
     host: smtp.gmail.com
     port: 587
@@ -53,4 +67,5 @@ management:
     tracing:
       endpoint: http://zipkin:9411/api/v2/spans
 
-kind: Application
+waha:
+  base-url: http://localhost:3000

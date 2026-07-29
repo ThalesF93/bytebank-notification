@@ -1,6 +1,7 @@
 package br.com.bytebank.notification.application.usecase.impl;
 
 import br.com.bytebank.notification.application.usecase.NotificationSenderUseCase;
+import br.com.bytebank.notification.domain.WhatsAppContract;
 import br.com.bytebank.notification.infrastructure.messaging.event.FraudNotificationEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class NotificationSenderUseCaseImpl implements NotificationSenderUseCase {
 
     private final JavaMailSender mailSender;
+    private final WhatsAppContract whatsAppContract;
 
     @Override
     public void execute(FraudNotificationEvent event) {
@@ -26,6 +28,7 @@ public class NotificationSenderUseCaseImpl implements NotificationSenderUseCase 
         ));
         mailSender.send(message);
 
-        
+        whatsAppContract.sendMessage(event.phone(), "Our System received a suspicious transaction, please answer: \n Y to continue or N to block it");
+
     }
 }
