@@ -6,6 +6,12 @@ plugins {
 group = 'br.com.bytebank'
 version = '1.0.0'
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -20,7 +26,6 @@ dependencies {
     implementation 'io.micrometer:micrometer-registry-prometheus'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
     implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
-    implementation 'org.springframework.boot:spring-boot-starter-kafka'
     implementation 'org.springframework.kafka:spring-kafka'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
 

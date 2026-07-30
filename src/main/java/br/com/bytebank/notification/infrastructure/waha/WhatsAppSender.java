@@ -17,7 +17,8 @@ public class WhatsAppSender implements WhatsAppContract {
 
     @Override
     public void sendMessage(String phone, String message) {
-        String chatId = phone +"@c.us";
+        log.info("Sending WhatsApp message");
+        String chatId = (phone.startsWith("55") ? phone : "55" + phone) + "@c.us";
 
        restClient.post()
                .uri("/api/sendText")
@@ -25,5 +26,7 @@ public class WhatsAppSender implements WhatsAppContract {
                .body(new WahaMessageRequest(chatId, message, "default"))
                .retrieve()
                .toBodilessEntity();
+
+        log.info("WhatsApp message sent successfully to chatId={}", chatId);
     }
 }
