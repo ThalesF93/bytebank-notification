@@ -1,4 +1,4 @@
-package br.com.bytebank.notification.infrastructure.messaging;
+package br.com.bytebank.notification.infrastructure.messaging.rabbitmq;
 
 import br.com.bytebank.notification.application.service.EmailService;
 import br.com.bytebank.notification.infrastructure.config.RabbitMQConfig;

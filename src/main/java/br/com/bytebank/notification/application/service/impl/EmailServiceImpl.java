@@ -1,4 +1,4 @@
-package br.com.bytebank.notification.application.impl;
+package br.com.bytebank.notification.application.service.impl;
 
 import br.com.bytebank.notification.application.service.EmailService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class EmailServiceImpl implements EmailService {
 
     private final JavaMailSender mailSender;
 
-    @Value("$spring.mail.username")
+    @Value("${spring.mail.username}")
     private String sender;
 
     @Override
@@ -33,4 +33,6 @@ public class EmailServiceImpl implements EmailService {
         ));
         mailSender.send(message);
     }
+
+
 }
